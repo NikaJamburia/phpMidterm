@@ -35,6 +35,7 @@
                 <th>Registration Date</th>
                 <th>Order Number</th>
                 <th>Delete</th>
+                <th>Update</th>
             </thead>
             <tbody>
             <?php foreach($employees as $employee){ ?>
@@ -45,13 +46,14 @@
                     <td><?= $employee['personalNumber'] ?></td>
                     <td><?= $employee['registrationDate'] ?></td>
                     <td><?= $employee['orderNumber'] ?></td>
-                    <th><a href="acripts/deleteEmployee.php">delete</a></th>
+                    <td><button onclick="deleteEmployee(<?= $employee['id'] ?>)" class="btn-danger">Delete</button></td>
+                    <td><button onclick="updateEmployee(<?= $employee['id'] ?>)" class="btn-warning">Update</button></td>
                 </tr>
             <?php } ?>
             </tbody>
         </table>
 
-        <form action="scripts/saveEmployee.php" method="post" id="form" class="form mt-1 border p-3 rounded">
+        <form action="" method="post" id="form" class="form mt-1 border p-3 rounded">
         <h3 class="text-center">Add Employee</h3>
         <hr>
         <div class="form-group">

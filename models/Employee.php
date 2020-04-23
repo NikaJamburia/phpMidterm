@@ -26,7 +26,7 @@
         public static function getbyId($id, $conn) {
             $query = "SELECT * FROM employees WHERE id = ?";
             $stmt = $conn->prepare($query);
-            $stmt->execute($id);
+            $stmt->execute([$id]);
             $employees = $stmt->fetchAll();
 
             return $employees;
@@ -50,8 +50,7 @@
         public function delete() {
             $query = "DELETE FROM employees WHERE id = ?";
             $stmt = $this->conn->prepare($query);
-            $stmt->execute($this->id);
-            $employees = $stmt->fetchAll();
+            $stmt->execute([$this->id]);
         }
     }
 ?>
