@@ -47,6 +47,18 @@
             ]);
         }
 
+        public function update() {
+            $query = "UPDATE employees SET firstName = ?, lastName = ?, birthDate = ?, personalNumber = ? WHERE id = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([
+                $this->firstName,
+                $this->lastName,
+                $this->birthDate,
+                $this->personalNumber,
+                $this->id
+            ]);
+        }
+
         public function delete() {
             $query = "DELETE FROM employees WHERE id = ?";
             $stmt = $this->conn->prepare($query);

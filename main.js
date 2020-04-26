@@ -46,19 +46,37 @@ function deleteEmployee(id) {
     xhr.send(params);
 }
 
-function updateEmployee(id) {
-    console.log(id);
+function fillEmployeeUpdateModal(employee) {
+    console.log(employee);
+    document.getElementById('idUpdate').value = employee.id;
+    document.getElementById('firstNameUpdate').value = employee.firstName;
+    document.getElementById('lastNameUpdate').value = employee.lastName;
+    document.getElementById('birthDateUpdate').value = employee.birthDate;
+    document.getElementById('personalNumberUpdate').value = employee.personalNumber;
+}
+
+function updateEmployee() {
+    var idParam = document.getElementById('idUpdate').value;
+    var firstNameParam = document.getElementById('firstNameUpdate').value;
+    var lastNameParam = document.getElementById('lastNameUpdate').value;
+    var birthDateParam = document.getElementById('birthDateUpdate').value;
+    var personalNumberParam = document.getElementById('personalNumberUpdate').value;
+    console.log(idParam);
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'scripts/updateEmployee.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-    params = 'id=' + id;
+    params = 'id=' + idParam + 
+    '&firstName=' + firstNameParam + 
+    '&lastName=' + lastNameParam +
+    '&birthDate=' + birthDateParam +
+    '&personalNumber=' + personalNumberParam;
     console.log(params)
     
     xhr.onload = function(){
         if(this.status == 200){
-            alert("Emoloyee deleted");
+            alert("Emoloyee Updated");
             location.reload();
         }
     }
